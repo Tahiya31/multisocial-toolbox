@@ -15,6 +15,8 @@
 import streamlit as st
 from streamlit.logger import get_logger
 
+from io import StringIO
+
 LOGGER = get_logger(__name__)
 
 
@@ -26,28 +28,28 @@ def run():
 
     st.write("# Welcome to MultiSOCIAL toolbox!")
 
-    st.sidebar.success("Select a demo above.")
+    #st.sidebar.success("Select a demo above.")
 
-    #st.file_uploader(label, type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="visible")
 
     st.markdown(
         """
-        Streamlit is an open-source app framework built specifically for
-        Machine Learning and Data Science projects.
-        **👈 Select a demo from the sidebar** to see some examples
-        of what Streamlit can do!
-        ### Want to learn more?
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+        
+        We present a new effort to assemble open-source tools into a single platform for multimodal interaction data
+        the MultiSOCIAL Toolbox (or the MULTImodal timeSeries Open-SourCe Interaction Analysis Library).
+          While these tools exist in separate packages for scientists with programming abilities
+          our goal is to expand access to scholars with limited (or even non-existent) programming experience
+            and to accelerate discovery through a unified multimodal data processing pipeline. 
+            The toolbox enables any researcher who has video files of any kind of interaction to extract time-series data in three modalities:
+          - body movement (non-verbal behavior); 
+          - transcripts (what was said during interaction); 
+          - acoustic prosodic characteristics (how it was said).
+        
     """
     )
 
+    st.header("If you have a video, follow the steps below")
+
+    st.file_uploader("Upload your video file", type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None,  disabled=False, label_visibility="visible")
 
 if __name__ == "__main__":
     run()
