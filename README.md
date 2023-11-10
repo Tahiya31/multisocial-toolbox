@@ -1,15 +1,4 @@
-# Welcome to streamlit
-
-This is the app you get when you run `streamlit hello`, extracted as its own app.
-
-Edit [Hello.py](./Hello.py) to customize this app to your heart's desire. ❤️
-
-Check it out on [Streamlit Community Cloud](https://st-hello-app.streamlit.app/)
-
-
-Paper info:
-
-**An Introduction to MultiSOCIAL Toolbox: An Open-Source Library for Quantifying Multimodal Social Interaction** 
+# Welcome to MultiSOCIAL toolbox! An Open-Source Library for Quantifying Multimodal Social Interaction** 
 
 Veronica Romero, Department of Psychology and Davis Institute for Artificial Intelligence,  Colby College, USA, vcromero@colby.edu, Tahiya Chowdhury, Davis Institute for Artificial Intelligence,  Colby College, USA, tchowdhu@colby.edu, Alexandra Paxton, Department of Psychological Science & Center for the Ecological Study of Perception and Action,  University of Connecticut, USA 
 
