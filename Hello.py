@@ -24,9 +24,11 @@ def run():
         page_icon="👋",
     )
 
-    st.write("# Welcome to Streamlit! 👋")
+    st.write("# Welcome to MultiSOCIAL toolbox!")
 
-    st.sidebar.success("Select a demo above.")
+    #st.sidebar.success("Select a demo above.")
+
+    st.file_uploader(label, type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="visible")
 
     st.markdown(
         """
