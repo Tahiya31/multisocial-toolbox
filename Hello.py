@@ -51,5 +51,15 @@ def run():
 
     st.file_uploader("Upload your video file", type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None,  disabled=False, label_visibility="visible")
 
+    st.button("Convert video to audio", type="secondary")
+
+    st.button("Split you video screen", type="secondary")
+
+    st.button("Get body movement", type="primary")
+
+    st.button("Get transcript", type="primary")
+
+    st.button("Get acoustics-prosodic", type="primary")
+
 if __name__ == "__main__":
     run()
