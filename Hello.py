@@ -17,6 +17,15 @@ from streamlit.logger import get_logger
 
 from io import StringIO
 
+#import libraries for multiSOCIAL toolbox
+import os 
+import pandas as pd
+import numpy as np
+import csv
+import subprocess
+
+
+
 LOGGER = get_logger(__name__)
 
 
@@ -49,17 +58,35 @@ def run():
 
     st.header("If you have a video, follow the steps below")
 
-    st.file_uploader("Upload your video file", type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None,  disabled=False, label_visibility="visible")
+    #message after uploading the file
+    # source: https://github.com/tyler-simons/backgroundremoval/blob/main/bg_remove.py
+    def uploader_callback():
+        print("File uploaded!")
+
+    video_upload = st.file_uploader("Upload your video file", type=["mp4"], accept_multiple_files=False, key=None, help=None, on_change=uploader_callback, args=None, kwargs=None,  disabled=False, label_visibility="visible")
+    audio_file = "output.wav"
+
+    if video_upload:
+        st.download_button("Download your audio file", convert_vid2audio(video_upload, audio_file), "application/octet-stream")
+        
 
     st.button("Convert video to audio", type="secondary")
 
-    st.button("Split you video screen", type="secondary")
+    st.button("Split your video screen", type="secondary")
 
     st.button("Get body movement", type="primary")
 
     st.button("Get transcript", type="primary")
 
-    st.button("Get acoustics-prosodic", type="primary")
+    st.button("Get acoustic-prosodic", type="primary")
+
+
+# functions for invoking different operations
+
+def convert_vid2audio(video_upload, audio_file):
+    command = "ffmpeg -i {video} -vn -acodec pcm_s16le -ar 16000 -ac 2 {audio}".format(video=video_upload, audio=audio_file)
+    subprocess.call(command,shell=True)
+
 
 if __name__ == "__main__":
     run()
