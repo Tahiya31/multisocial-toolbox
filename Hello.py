@@ -23,10 +23,18 @@ import numpy as np
 import csv
 import subprocess
 
+#a few more libraries
+import torch
+import whisper
+
 
 
 LOGGER = get_logger(__name__)
+# functions for invoking different operations
 
+def convert_vid2audio(video_upload, audio_file):
+    command = "ffmpeg -i {video} -vn -acodec pcm_s16le -ar 16000 -ac 2 {audio}".format(video=video_upload, audio=audio_file)
+    subprocess.call(command,shell=True)
 
 def run():
     st.set_page_config(
@@ -79,12 +87,6 @@ def run():
 
     st.button("Get acoustic-prosodic", type="primary")
 
-
-# functions for invoking different operations
-
-def convert_vid2audio(video_upload, audio_file):
-    command = "ffmpeg -i {video} -vn -acodec pcm_s16le -ar 16000 -ac 2 {audio}".format(video=video_upload, audio=audio_file)
-    subprocess.call(command,shell=True)
 
 
 if __name__ == "__main__":
