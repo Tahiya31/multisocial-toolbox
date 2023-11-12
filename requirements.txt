@@ -3,3 +3,6 @@ numpy
 pandas
 pydeck
 streamlit
+ffmpeg
+torch
+whisper
