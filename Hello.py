@@ -67,7 +67,7 @@ def run():
     audio_file = "output.wav"
 
     if video_upload:
-        st.download_button("Download your audio file", convert_vid2audio(video_upload, audio_file), "application/octet-stream")
+        st.download_button("Download your audio file", convert_vid2audio(video_upload, audio_file), "audio/wav")
         
 
     st.button("Convert video to audio", type="secondary")
