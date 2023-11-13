@@ -32,3 +32,10 @@ Let's get that app running on our browser! To do this:
 
    The app is ready to use! **Welcome to MultiSOCIAL Toolbox**. 
 
+# Common issues and workarounds
+
+1. `The codespace is taking too long to setup` -- If it does not take you to the Visual studio symbol within a few minutes, feel free to reflesh your browser tab.
+2. `The codespace is taking too long to setup` -- Codespace responds best on Google Chrome compared to other browsers (e.g., Safari).
+3. `I am getting an error in the TERMINAL tab about whisper and torch.` -- You can install these two packages by running `pip install torch torch-utils whisper` in the terminal.
+
+
