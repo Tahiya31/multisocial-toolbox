@@ -37,6 +37,12 @@ import opensmile
 import base64
 
 
+# TO DO: 
+# allow selecting feature type and level for opensmile
+# allow choice of language, model for whisper
+# allow multiple file upload
+
+
 LOGGER = get_logger(__name__)
 
 #main app run
@@ -64,7 +70,7 @@ def run():
     """
     )
 
-    st.subheader("If you have a video, follow the steps below")
+    st.subheader("I want transcript from an audio file")
 
     #message after uploading the file
     # source: https://github.com/tyler-simons/backgroundremoval/blob/main/bg_remove.py
@@ -89,15 +95,21 @@ def run():
 
         st.download_button("Download your transcript", text['text'], "transcript_"+upload.name.split('.')[0]+".txt", "audio/wav")        
 
-    video_upload = st.file_uploader("Upload your video file here", type=["wav"], accept_multiple_files=False,label_visibility="visible")
+    video_upload = st.file_uploader("Upload your audio file here", type=["wav"], accept_multiple_files=False,label_visibility="visible", key= 'transcript')
 
     if video_upload:
         get_transcript(video_upload)
     
+    st.divider()
     
+    st.subheader("I want acoustic-prosodic characteristics from an audio file")
+
+    
+
     #get acoustic-prosodic features with opensmile
     def get_audio_features(upload):
 
+        
         feature_set_name = opensmile.FeatureSet.ComParE_2016
         feature_level_name=opensmile.FeatureLevel.LowLevelDescriptors
 
@@ -114,7 +126,6 @@ def run():
 
         #feature column names for csv file
         feature_names = smile.feature_names
-
 
         # complete final column names
         audio, sr = librosa.load(upload)
@@ -140,7 +151,7 @@ def run():
 
         st.download_button("Download your audio features", final_df, 'acoustic_prosodic_features_' + upload.name.split('.')[0] + '.csv', "txt/csv")
         
-    audio_upload = st.file_uploader("Upload your audio file here", type=["wav"], accept_multiple_files=False,label_visibility="visible")
+    audio_upload = st.file_uploader("Upload your audio file here", type=["wav"], accept_multiple_files=False,label_visibility="visible", key= 'speech')
 
     if audio_upload:
         #bytes_data = audio_upload.getvalue()
@@ -148,40 +159,12 @@ def run():
         # st.write(bytes_data)
         get_audio_features(audio_upload)
 
+    st.divider()
+
+    st.subheader("I have feedback/ideas for this") 
+    st.link_button("Sure, let's go to the feedback form", "https://museum.colby.edu/programs-and-events/visit-evaluation-form/", help=None, type="secondary", disabled=False, use_container_width=False)
 
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #st.button("Convert video to audio", type="secondary")
-
-    #st.button("Split your video screen", type="secondary")
-
-    #st.button("Get body movement", type="primary")
-
-    #st.button("Get transcript", type="primary")
-
-    #st.button("Get acoustic-prosodic", type="primary")
-
-
+# misc: sharing the app with others: https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace
 if __name__ == "__main__":
     run()
