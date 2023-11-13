@@ -87,7 +87,7 @@ def run():
         audio, sr = librosa.load(upload)
         text = model.transcribe(audio)  
 
-        st.download_button("Download your transcript", text['text'], "transcript.txt", "audio/wav")        
+        st.download_button("Download your transcript", text['text'], "transcript_"+upload.name.split('.')[0]+".txt", "audio/wav")        
 
     video_upload = st.file_uploader("Upload your video file here", type=["wav"], accept_multiple_files=False,label_visibility="visible")
 
@@ -131,8 +131,8 @@ def run():
         #file and feature
         id_and_feature_columns = ['file_id'] + feature_names
         id_and_feature = [file_id + mean_feature]
-        st.write(id_and_feature_columns)
-        st.write(id_and_feature)
+        #st.write(id_and_feature_columns)
+        #st.write(id_and_feature)
 
         df = pd.DataFrame(id_and_feature,columns =id_and_feature_columns)
         final_df = df.to_csv(index=False)
