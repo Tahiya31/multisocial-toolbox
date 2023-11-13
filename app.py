@@ -34,6 +34,7 @@ from scipy.io.wavfile import read
 import librosa
 
 import opensmile
+import base64
 
 
 LOGGER = get_logger(__name__)
@@ -134,9 +135,10 @@ def run():
         st.write(id_and_feature)
 
         df = pd.DataFrame(id_and_feature,columns =id_and_feature_columns)
-        df.to_csv(index=False).encode("utf-8")
+        final_df = df.to_csv(index=False)
+        #b64 = base64.b64encode(df.encode()).decode()
 
-        st.download_button("Download your audio features", df, "txt/csv")
+        st.download_button("Download your audio features", final_df, 'acoustic_prosodic_features_' + upload.name.split('.')[0] + '.csv', "txt/csv")
         
     audio_upload = st.file_uploader("Upload your audio file here", type=["wav"], accept_multiple_files=False,label_visibility="visible")
 
