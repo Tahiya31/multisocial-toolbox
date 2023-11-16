@@ -9,9 +9,7 @@ whisper
 scipy
 librosa
 opensmile
-opencv-python-headless
-mediapipe
-ffmpeg-python
+
 
 
 

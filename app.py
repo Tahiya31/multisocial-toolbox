@@ -27,9 +27,8 @@ import subprocess
 import pathlib
 
 # import libraries for video processing
-import cv2
-import mediapipe as mp
-import csv
+#import cv2
+#import mediapipe as mp
 import tempfile
 
 
@@ -42,8 +41,6 @@ import librosa
 
 import opensmile
 import base64
-from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
-import moviepy.editor as mp
 
 
 # TO DO: 
