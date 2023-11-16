@@ -37,5 +37,6 @@ Let's get that app running on our browser! To do this:
 1. `The codespace is taking too long to setup` -- If it does not take you to the Visual studio symbol within a few minutes, feel free to refresh your browser tab.
 2. `The codespace is taking too long to setup` -- Codespace responds best on Google Chrome compared to other browsers (e.g., Safari).
 3. `I am getting an error in the TERMINAL tab about whisper and torch.` -- You can install these two packages by running `pip install torch torch-utils whisper` in the terminal.
+4. `I am having issue with openCV when importing cv2` -- You may want to update pip first (`pip install --upgrade pip`), and then run `pip install -r requirements.txt` again to resolve this.
 
 
