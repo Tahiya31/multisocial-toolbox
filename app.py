@@ -27,8 +27,8 @@ import subprocess
 import pathlib
 
 # import libraries for video processing
-#import cv2
-#import mediapipe as mp
+import cv2
+import mediapipe as mp
 import tempfile
 
 

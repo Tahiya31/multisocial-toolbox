@@ -2,14 +2,15 @@ altair
 pandas
 pydeck
 streamlit
-ffmpeg
+ffmpeg-python
 torch
 numpy==1.23.4
 whisper
 scipy
 librosa
 opensmile
-
+mediapipe
+opencv-python-headless
 
 
 
