@@ -74,13 +74,25 @@ def run():
 
     #message after uploading the file
     # source: https://github.com/tyler-simons/backgroundremoval/blob/main/bg_remove.py
-    
-
-   
     def convert_vid2audio(video_upload, audio_file):
-        command = "ffmpeg -i {video} -acodec pcm_s16le -ar 16000 -ac 2 {audio}".format(video=video_upload, audio=audio_file)
-        subprocess.call(command,shell=True)
+        command = "ffmpeg -i {$video_upload} -acodec pcm_s16le -ar 16000 -ac 2 {$audio_file}"
+        subprocess.call(command, shell=True)
 
+        st.download_button("Download your audio", audio_file, "converted_"+video_upload.name.split('.')[0]+".wav", "audio/wav")        
+
+    with st.sidebar:
+        st.subheader("Data Preparation")
+
+        st.markdown("Convert video (mp4) to audio (wav)")
+        video_upload = st.file_uploader("Upload your video file here", type=["mp4"], accept_multiple_files=False,label_visibility="visible", key= 'video_audio')
+        
+        if video_upload:
+            audio_file = "converted_" + video_upload.name.split('.')[0]+".wav"
+            convert_vid2audio(video_upload, audio_file)
+
+    #st.divider()
+    
+        
     #get transcript using whisper
     def get_transcript(upload):
         torch.cuda.is_available()
@@ -95,17 +107,16 @@ def run():
 
         st.download_button("Download your transcript", text['text'], "transcript_"+upload.name.split('.')[0]+".txt", "audio/wav")        
 
-    video_upload = st.file_uploader("Upload your audio file here", type=["wav"], accept_multiple_files=False,label_visibility="visible", key= 'transcript')
+    sound_upload = st.file_uploader("Upload your audio file here", type=["wav"], accept_multiple_files=False,label_visibility="visible", key= 'transcript')
 
-    if video_upload:
-        get_transcript(video_upload)
+    if sound_upload:
+        get_transcript(sound_upload)
     
     st.divider()
-    
+
     st.subheader("I want acoustic-prosodic characteristics from an audio file")
 
     
-
     #get acoustic-prosodic features with opensmile
     def get_audio_features(upload):
 
@@ -161,8 +172,8 @@ def run():
 
     st.divider()
 
-    st.subheader("I have feedback/ideas for this") 
-    st.link_button("Sure, let's go to the feedback form", "https://museum.colby.edu/programs-and-events/visit-evaluation-form/", help=None, type="secondary", disabled=False, use_container_width=False)
+    st.subheader("I have feedback/ideas for this toolbox") 
+    st.link_button("Sure, let's go to the feedback form", "https://forms.gle/SPojkeqLhXsKVJK1A", help=None, type="secondary", disabled=False, use_container_width=False)
 
 
 # misc: sharing the app with others: https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace
