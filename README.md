@@ -26,9 +26,10 @@ This toolbox is created using streamlit, a Python based web app environment.
 Let's get that app running on our browser! To do this:
 
 1. Click on `TERMINAL` in the lower panel on your screen.
-2. type `pip install -r requirements.txt` and hit `Enter`. This will install all the software packages we are using behind our app.
-3. Once everything is installed, type `streamlit run app.py` to run the app.
-4. If everything went smoothly above (hopefully!), you should see the app interface appearing on the right panel
+2. Type `pip install --upgrade pip` AND HIT `Enter` to make sure you are using the latest package manager.
+3. Then type `pip install -r requirements.txt` and hit `Enter`. This will install all the software packages we are using behind our app.
+4. Once everything is installed, type `streamlit run app.py` to run the app.
+5. If everything went smoothly above (hopefully!), you should see the app interface appearing on the right panel. You can click on window button to open it in a new tab.
 
    The app is ready to use! **Welcome to MultiSOCIAL Toolbox**. 
 
@@ -38,5 +39,10 @@ Let's get that app running on our browser! To do this:
 2. `The codespace is taking too long to setup` -- Codespace responds best on Google Chrome compared to other browsers (e.g., Safari).
 3. `I am getting an error in the TERMINAL tab about whisper and torch.` -- You can install these two packages by running `pip install torch torch-utils whisper` in the terminal.
 4. `I am having issue with openCV when importing cv2` -- You may want to update pip first (`pip install --upgrade pip`), and then run `pip install -r requirements.txt` again to resolve this.
+
+# Acknowledgements
+We thank the authors of OpenPose, OpenSMILE, and whisper for their amazing research and sharing the works as open-source tools. If you find these tools useful in your reserach, please cite the original research papers.
+
+
 
 
