@@ -9,6 +9,7 @@ whisper
 scipy
 librosa
 opensmile
+git+https://github.com/openai/whisper.git 
 mediapipe
 opencv-python-headless
 

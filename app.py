@@ -41,6 +41,7 @@ import librosa
 
 import opensmile
 import base64
+import sys
 
 
 # TO DO: 
@@ -108,7 +109,7 @@ def run():
     def get_transcript(upload):
         torch.cuda.is_available()
         DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-
+        #DEVICE = "cpu"
         #this chooses the model language to english
         model = whisper.load_model("base.en", device=DEVICE)
         
@@ -151,7 +152,7 @@ def run():
 
         # complete final column names
         audio, sr = librosa.load(upload)
-        st.write(upload)
+        #st.write(upload)
             
         file_id = [str(upload.name)]
         #feature = smile.process_file(upload)
@@ -184,6 +185,16 @@ def run():
     st.divider()
 
     st.subheader("I want movement from a video file")
+    
+    def install(package):
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    
+    
+    #install("numpy")
+    #install("opencv-python-headless")
+    #install("mediapipe")
+
+
 
     def get_movement(movement_upload):
         # Initialize MediaPipe Pose and Drawing utilities
